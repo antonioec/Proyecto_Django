@@ -1,0 +1,103 @@
+{% extends 'prueba/base.html' %}
+{% block title %}Portada{% endblock %}
+{% block headers %}
+	<h1>Cabecera de inicio</h1>
+{% endblock %}
+{% block content %}
+	<div class="container-fluid">
+		<h2>Motor de búsqueda</h2>
+		<form action="javascript: return false">
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<label name="id">Identificador</label><br>
+						<input type="text" placeholder="Cualquiera">
+					</div>
+
+					<div class="form-group">
+						<label name="ubicacion">Ubicación</label><br>
+						 <select name="ubicacion">
+							 <option value="benalmadena-costa">Benalmadena Costa</option>
+							 <option value="benalmadena-pueblo">Benalmadena Pueblo</option>
+							 <option value="Torremolinos">Torremolinos</option>
+							 <option value="Fuengirola">Fuengirola</option>
+							 <option value="cualquiera" selected>Cualquiera</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="form-group">
+						<label name="operacion">Operación</label><br>
+						 <select name="operacion">
+							 <option value="venta">Venta</option>
+							 <option value="compra">Compra</option>
+							 <option value="cualquiera" selected>Cualquiera</option>
+						 </select>
+					</div>
+
+					<div class="form-group">
+						<label name="tipo">Tipo de propiedad</label><br>
+						<select name="tipo">
+							 <option value="apartamento">Apartamento</option>
+							 <option value="atico">ático</option>
+							 <option value="adosado" selected>adosado</option>
+							 <option value="cualquiera" selected>Cualquiera</option>
+						 </select>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="form-group">
+						<label name="dormitorios">Dormitorios</label><br>
+						<input type="number" placeholder="Cualquiera" min="0">
+					</div>
+
+					<div class="form-group">
+						<label name="banos">Baños</label><br>
+						<input type="number" placeholder="Cualquiera" min="0">
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="form-group">
+						<label name="premin">Precio mínimo</label><br>
+						<input type="number" placeholder="Cualquiera" min="0">
+					</div>
+
+					<div class="form-group">
+						<label name="premax">Precio máximo</label><br>
+						<input type="number" placeholder="Cualquiera" min="0">
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="form-group">
+						<label name="supmin">Superficie min.</label><br>
+						<input type="number" placeholder="Cualquiera" min="0">
+					</div>
+
+					<div class="form-group">
+						<label name="supmax">Superficie máx.</label><br>
+						<input type="number" placeholder="Cualquiera" min="0">
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Buscar Viviendas</button>
+		</form>
+	</div>
+	<hr>
+	<div class="container" style="margin-top:30px">
+		<h2>Nuestras Viviendas</h2>
+		<div class="row">
+			<div class="col-sm-8">
+				<h2>Título de Contenido</h2>
+				<h5>Descripción del título</h5>
+				<a href="section.html"><div class="fakeimg">Imagen de prueba</div></a>
+				<p>Descripción del contenido.</p>
+				<br>
+			</div>
+		</div>
+		<hr>
+	</div>
+{% endblock %}

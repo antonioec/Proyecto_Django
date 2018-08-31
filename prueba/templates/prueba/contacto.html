@@ -1,0 +1,35 @@
+{% extends 'prueba/base.html' %}
+{% block title %}Contacto{% endblock %}
+{% block headers %}
+	<h1>Sección de contacto</h1>
+{% endblock %}
+{% load static %}
+{% block content %}
+<div class="container-fluid bg-grey">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contacte con nosotros y responderemos en menos de 24 horas.</p>
+      <p><img style="width: 24px; heigth: 24px;" src="{% static 'prueba/img/icons/si-glyph-pin-location.svg' %}"> España</p>
+      <p><img style="width: 24px; heigth: 24px;" src="{% static 'prueba/img/icons/si-glyph-smartphone.svg' %}"> 666666666</p>
+      <p><img style="width: 24px; heigth: 24px;" src="{% static 'prueba/img/icons/si-glyph-mail.svg' %}"> Correo electrónico</p>
+    </div>
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn btn-default pull-right" type="submit">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

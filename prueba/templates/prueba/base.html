@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Proyecto Integrado | {% block title %}{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Antonio Extremera Casado">
+    <meta name="description" content="Aplicación web alojada en Google Cloud Platform para Proyecto Integrado">
+    <meta name="keywords" content="">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'prueba/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'prueba/css/mobile_styles.css' %}">
+    <script src="{% static 'prueba/js/scripts.js' %}"></script>
+    <script src="{% static 'prueba/js/validate.js' %}"></script>
+
+</head>
+<header style="background-image: url('img/home.jpg')">
+	<div class="container-fluid">
+        <div class="jumbotron text-center" style="margin-bottom:0">
+		  {% block headers %}{% endblock %}
+		</div>
+
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		  <a class="navbar-brand" href="#">Navegador</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+			  <li class="nav-item">
+				<a class="nav-link active" href="{% url 'home' %}">Inicio</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="{% url 'seccion' %}">Seccion</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
+			  </li>
+			</ul>
+		  </div>
+		</nav>
+
+        <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="7500">
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target=".carousel" data-slide-to="0" class="active"></li>
+                <li data-target=".carousel" data-slide-to="1"></li>
+                <li data-target=".carousel" data-slide-to="2"></li>
+            </ul>
+
+            <!-- The slideshow -->
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="{% static 'prueba/img/Vivienda1.jpg' %}" alt="">
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'prueba/img/Vivienda2.jpg' %}" alt="">
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'prueba/img/Vivienda3.jpg' %}" alt="">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href=".carousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href=".carousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+	</div>
+</header>
+<body>
+    <!-- Contenido -->
+    {% block content %}
+
+
+
+
+
+
+
+
+
+
+
+
+    {% endblock %}
+    <!-- Footer -->
+    <div class="jumbotron" style="margin-bottom:0">
+        <div class="row">
+            <div class="col">
+                <h3>Redes Sociales</h3>
+                  <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link" href="https://www.facebook.com"><img style="width: 24px; heigth: 24px;" src="{% static 'prueba/img/Facebook.ico' %}"> Facebook</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="https://www.instagram.com"><img style="width: 24px; heigth: 24px;" src="{% static 'prueba/img/Instagram.ico' %}"> Instagram</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="https://www.twitter.com"><img style="width: 24px; heigth: 24px;" src="{% static 'prueba/img/Twitter.ico' %}"> Twitter</a>
+                    </li>
+                  </ul>
+                  <hr class="d-sm-none">
+            </div>
+            <div class="col">
+                <h3>Contacto</h3>
+                  <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                      <p><img style="width: 24px; heigth: 24px;" src="{% static 'prueba/img/icons/si-glyph-smartphone.svg' %}"> Teléfono: 666666666</p>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#"><img style="width: 24px; heigth: 24px;" src="{% static 'prueba/img/icons/si-glyph-mail.svg' %}"> Correo electrónico</a>
+                    </li>
+                  </ul>
+                  <hr class="d-sm-none">
+            </div>
+            <div class="col">
+                <h3>Destacados</h3>
+                  <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                      <a href="#">Apartamento</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#">Ático</a>
+                    </li>
+                      <li class="nav-item">
+                      <a href="#">Adosado</a>
+                    </li>
+                  </ul>
+                  <hr class="d-sm-none">
+            </div>
+        </div>
+        <div class="copyright text-center">
+            <p>Copyright © 2018. Web desarrollada por Antonio Extremera Casado como Proyecto Integrado.</p>
+        </div>
+    </div>
+
+    <!-- Librerias Bootstrap CSS JS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>

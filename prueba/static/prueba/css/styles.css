@@ -1,0 +1,124 @@
+
+body {
+    font-family: arial;
+    font-size: 16px;
+    margin: 2%;
+    background: #41eef4;
+}
+
+/*LOGOTIPO*/
+
+#logo {
+    width: 150px;
+    height: 100px;
+    background: #FFF;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 15px;
+}
+
+/*CABECERA*/
+
+header {
+    width: auto;
+    height: auto;
+}
+
+#header a {
+    color: #000;
+    text-decoration: none;
+}
+
+header .contact, header .social {
+    display: inline-block;
+    padding: 10px 25px;
+    vertical-align: middle;
+}
+
+/*NAVEGADOR*/
+
+nav {
+    display: inline-block;
+}
+
+nav span {
+    background: #FFF;
+    padding: 10px 25px;
+    border-radius: 15px;
+}
+
+/*IMAGEN PRINCIPAL*/
+
+#home-image {
+    background: #FFF;
+    width: auto;
+    height: 300px;
+}
+
+/*MOTOR DE BÚSQUEDA*/
+
+div#srch-engine {
+    max-width: 1200px;
+    margin-top: 10px;
+    background: #FFF;
+    padding: 20px;
+}
+
+#srch-engine span {
+    display: inline-block;
+    width: 200px;
+    margin-top: 10px;
+}
+
+span input, span select {
+    margin-top: 5px;
+    width: 185px;
+}
+
+/*WRAPPER DEL CONTENIDO*/
+
+div#content-wrapper {
+    height: 1000px;
+    background: #FFF;
+    margin-top: 15px;
+}
+
+/*FOOTER*/
+
+footer {
+    margin-top: 15px;
+    background: #FFF;
+    height: 300px;
+}
+
+#footer div {
+    display: inline-block;
+    width: 260px;
+    vertical-align: top;
+    padding: 5px;
+    margin-left: 15px;
+    border-right: 2px solid black;
+    height: 250px;
+}
+
+div#copyright {
+    display: inherit;
+    border: none;
+    margin-top: 20px;
+    font-size: 12px;
+    padding: 0;
+    height: auto;
+    width: auto;
+    text-align: center;
+}
+
+.fakeimg {
+  height: 200px;
+  background: #aaa;
+}
+
+.carousel-item img {
+  display: block;
+  width: 100%;
+  max-height: 550px;
+}
