@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting started with Django on Google Cloud Platform on App Engine Standard
 
 [![Open in Cloud Shell][shell_img]][shell_link]
@@ -13,3 +14,6 @@ example app to deploy.
 
 # Tutorial
 See our [Running Django in the App Engine Standard Environment](https://cloud.google.com/python/django/appengine) tutorial for instructions for setting up and deploying this sample application.
+=======
+# Proyecto_Django
+>>>>>>> fc900f1a760f44777783297b29d9371e47e052ad
