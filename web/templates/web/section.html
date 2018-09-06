@@ -1,60 +1,57 @@
-{% extends 'prueba/base.html' %}
-{% block title %}Seccion de prueba{% endblock %}
+{% extends 'web/base.html' %}
+{% block title %}Seccion{% endblock %}
 {% block content %}
+{% load static %}
     <div class="container-fluid">
+        <hr>
 		<div class="container" style="margin-top:30px">
 		  <div class="row">
 			<div class="col-sm-8">
-                <h2>Título de Contenido</h2>
-                <h5>Descripción del título</h5>
-                <div class="fakeimg">Imagen de prueba</div>
-                <p>Descripción del contenido.</p>
+                <h2>{{ vivienda.titulo }}</h2>
+                <h5>{{ vivienda.ubicacion }}</h5>
+                <img class="img-fluid rounded mb-3 mb-md-0" src="{{vivienda.imagen.url}}" style="width: 800px; height: 400px" alt="">
+                <p>{{ vivienda.descripcion }}</p>
                 <br>
-                <h2>PRECIO</h2>
+                <h2>{{ vivienda.operacion }}</h2>
+                <h2>{{ vivienda.precio }} {% if vivienda.operacion == 'Alquiler' %}€/Dia{% else %}€{% endif %}</h2>
 			</div>
 		  </div>
 		</div>
-
         <div class="container" style="margin-top:30px">
+            <hr>
             <h2>Características</h2>
 		    <div class="row">
                 <div class="col">
                     <ul class="list-group">
-                        <li class="list-group-item">Identificador</li>
-                        <li class="list-group-item">Operación</li>
-                        <li class="list-group-item">Dormitorios</li>
-                        <li class="list-group-item">Precio</li>
-                        <li class="list-group-item">Superficie(m2)</li>
-                        <li class="list-group-item">Ubicación</li>
-                        <li class="list-group-item">Tipo</li>
-                        <li class="list-group-item">Baños</li>
-                        <li class="list-group-item">Antigüedad</li>
+                        <li class="list-group-item"><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-id-badge.svg' %}"> Identificador</li>
+                        <li class="list-group-item"><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-bed.svg' %}"> Dormitorios</li>
+                        <li class="list-group-item"><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-square-dashed-2.svg' %}"> Superficie(m2)</li>
+                        <li class="list-group-item"><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-house.svg' %}"> Tipo</li>
+                        <li class="list-group-item"><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-shower.svg' %}"> Baños</li>
+                        <li class="list-group-item"><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-caterpillar-machine.svg' %}"> Fecha de construcción</li>
                     </ul>
                 </div>
 
                 <div class="col">
                     <ul class="list-group">
-                        <li class="list-group-item">HTRJYR17</li>
-                        <li class="list-group-item">Venta</li>
-                        <li class="list-group-item">2</li>
-                        <li class="list-group-item">50.000€</li>
-                        <li class="list-group-item">25</li>
-                        <li class="list-group-item">Málaga</li>
-                        <li class="list-group-item">Ático</li>
-                        <li class="list-group-item">3</li>
-                        <li class="list-group-item">2005</li>
+                        <li class="list-group-item">{{ vivienda.id }}</li>
+                        <li class="list-group-item">{{ vivienda.dormitorios }}</li>
+                        <li class="list-group-item">{{ vivienda.superficie }}</li>
+                        <li class="list-group-item">{{ vivienda.tipo }}</li>
+                        <li class="list-group-item">{{ vivienda.banos }}</li>
+                        <li class="list-group-item">{{ vivienda.antiguedad }}</li>
                     </ul>
                 </div>
 		  </div>
 		</div>
-
         <div class="container" style="margin-top:30px">
+            <hr>
 		  <div class="row">
 			<div class="col-sm-8">
                 <h2>Ubicación</h2>
                 <div class="row">
                     <div class="col">
-                        <iframe width="100%" height="600" src="https://maps.google.com/maps?width=100%&height=600&hl=es&coord=36.602348, -4.529332&q=Calle%20Medina%20Azahara%2C%20Benalmadena%2C%20Espa%C3%B1a+(Mi%20nombre%20de%20egocios)&ie=UTF8&t=&z=18&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="https://www.mapsdirections.info/crear-un-mapa-de-google/"></iframe>
+                        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAOKJna-5QpOVSChlOdYiMRIxxp5kOyWY8&q={{vivienda.altitud}},{{vivienda.latitud}}" width="1115" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
                 </div>
 			</div>
@@ -62,16 +59,18 @@
 		</div>
 
         <div class="container" style="margin-top:30px">
+            <hr>
 		  <div class="row">
 			<div class="col-sm-8">
-                <h2>Eficiencia Energética</h2>
+                <h2>Eficiencia Energética: {{ vivienda.eficiencia }}</h2>
                 <div class="row">
                     <div class="col">
-                        <div class="fakeimg">Imagen de prueba de la Eficiencia Energética</div>
+                        <img class="img-fluid rounded mb-3 mb-md-0" src="{% static 'web/img/energetica.jpg' %}" style="width: 750px; height: 350px" alt="">
                     </div>
                 </div>
 			</div>
 		  </div>
 		</div>
+        <hr>
     </div>
 {% endblock %}

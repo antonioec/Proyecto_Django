@@ -112,11 +112,6 @@ div#copyright {
     text-align: center;
 }
 
-.fakeimg {
-  height: 200px;
-  background: #aaa;
-}
-
 .carousel-item img {
   display: block;
   width: 100%;
