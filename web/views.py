@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, HttpResponse
+from panel_control.models import Vivienda
 
 # html_base = """
 # <h1>Proyecto Integrado</h1>
@@ -13,13 +14,11 @@ from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 def home(request):
-    #html_response = html_base + "<h1>Home</h1>"
-    #for i in range(0,10):
-        #html_response+="<p>Buenas tardes</p>"
-    return render(request, "prueba/home.html")
+    viviendas = Vivienda.objects.all() # Coge todos los objetos del modelo de Vivienda
+    return render(request, "web/home.html", {'viviendas':viviendas})
 
 def contacto(request):
-    return render(request, "prueba/contacto.html")
+    return render(request, "web/contacto.html")
 
 def section(request):
-    return render(request, "prueba/section.html")
+    return render(request, "web/section.html")
