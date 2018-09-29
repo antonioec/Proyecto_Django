@@ -1,0 +1,89 @@
+.col-md-7 {
+    margin-top: 0 !important;
+}
+
+.carousel-item img {
+    min-height: 280px;
+}
+
+a.btn.btn-lg.btn-primary {
+    font-size: 12px;
+}
+
+.carousel-caption {
+    bottom: 10px !important;
+}
+
+.container-fluid.search {
+    width: 94.5% !important;
+}
+
+.form-group {
+    font-size: 22.6px !important;
+}
+
+@media only screen and (max-width: 400px) {
+    .form-group {
+        font-size: 22.1px !important;
+    }
+}
+
+.container {
+    padding-left: 25px !important;
+}
+
+img.img-fluid.rounded.mb-3.mb-md-0 {
+    width: 95% !important;
+}
+
+.col-sm-5.contacto {
+    margin-top: -45px;
+}
+
+img.img-fluid.rounded.mb-3.mb-md-0 {
+    height: 280px !important;
+}
+
+.list-group-item {
+    padding: 0.55rem 1.25rem !important;
+    font-size: 14px;
+    height: 55px !important;
+}
+
+.row.caract {
+    width: 108%;
+}
+
+.list-group {
+    width: 118% !important;
+}
+
+.col-sm-5.formulario {
+    margin-top: 25px !important;
+}
+
+nav.navbar.navbar-expand-sm.bg-dark.navbar-dark {
+    width: 92.5%;
+}
+
+#Formulario {
+    width: 100%;
+    display: none;
+    padding-left: 0;
+}
+
+.busqueda {
+    padding-left: 0 !important;
+}
+
+.politicas.text-center {
+    font-size: 13px;
+}
+
+.copyright.text-center {
+    font-size: 12px;
+}
+
+span.nav-text {
+    background: none;
+}

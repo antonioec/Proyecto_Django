@@ -1,0 +1,150 @@
+{% extends 'web/base.html' %}
+{% block title %}Viviendas{% endblock %}
+{% block headers %}
+	<h1>Cabecera de inicio</h1>
+{% endblock %}
+{% block content %}
+{% load static %}
+{% load is_mobile %}
+{% device_is_mobile request as device_is_mobile %}
+<hr>
+	<div class="container-fluid search">
+		<p class="busqueda">Búsqueda Avanzada<img class="busqueda-img" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-arrow-down.svg' %}"></p>
+		<br>
+		<form role="form" id="Formulario" action="" method="POST">
+			{% csrf_token %}
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<label name="id" for="identificador">Identificador</label><br>
+						{{form.identificador}}
+					</div>
+					{% if form.identificador.errors %}
+            			{{form.identificador.errors}}
+          			{% endif %}
+
+					<div class="form-group">
+						<label name="operacion" for="operacion">Operación</label><br>
+						 {{form.operacion}}
+					</div>
+					{% if form.operacion.errors %}
+            			{{form.operacion.errors}}
+          			{% endif %}
+				</div>
+
+				<div class="col">
+					<div class="form-group">
+						<label name="supmin" for="supmin">Superficie min.</label><br>
+						{{form.supmin}}
+					</div>
+					{% if form.supmin.errors %}
+            			{{form.supmin.errors}}
+          			{% endif %}
+
+					<div class="form-group">
+						<label name="supmax" for="supmax">Superficie máx.</label><br>
+						{{form.supmax}}
+					</div>
+					{% if form.supmax.errors %}
+            			{{form.supmax.errors}}
+          			{% endif %}
+				</div>
+
+				<div class="col">
+					<div class="form-group">
+						<label name="dormitorios" for="dormitorios">Dormitorios</label><br>
+						{{form.dormitorios}}
+					</div>
+					{% if form.dormitorios.errors %}
+            			{{form.dormitorios.errors}}
+          			{% endif %}
+
+					<div class="form-group">
+						<label name="banos" for="banos">Baños</label><br>
+						{{form.banos}}
+					</div>
+					{% if form.banos.errors %}
+            			{{form.banos.errors}}
+          			{% endif %}
+				</div>
+
+				<div class="col">
+					<div class="form-group">
+						<label name="premin" for="premin">Precio mínimo</label><br>
+						{{form.premin}}
+					</div>
+					{% if form.premin.errors %}
+            			{{form.premin.errors}}
+          			{% endif %}
+
+					<div class="form-group">
+						<label name="premax" for="premax">Precio máximo</label><br>
+						{{form.premax}}
+					</div>
+					{% if form.premax.errors %}
+            			{{form.premax.errors}}
+          			{% endif %}
+				</div>
+
+				<div class="col">
+					<div class="form-group">
+						<label name="ubicacion" for="ubicacion">Ubicación</label><br>
+						 {{form.ubicacion}}
+					</div>
+					{% if form.ubicacion.errors %}
+            			{{form.ubicacion.errors}}
+          			{% endif %}
+
+					<div class="form-group">
+						<label name="tipo" for="tipo">Tipo de propiedad</label><br>
+						{{form.tipo}}
+					</div>
+					{% if form.tipo.errors %}
+            			{{form.tipo.errors}}
+          			{% endif %}
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Buscar Viviendas</button>
+			<hr>
+		</form>
+	</div>
+	<div class="container" style="margin-top:30px">
+		<h2>Nuestras Viviendas</h2>
+		<br>
+		<div class="page-nav"></div>
+		<hr>
+		{% if viviendas %}
+			{% for vivienda in viviendas|dictsort:"id" reversed %}
+				<div class="row paginate">
+					<div class="col-md-7">
+						<div class="container-fade {% if not device_is_mobile %}more-info-container{% endif %}">
+						  <a href="{% url 'vivienda' vivienda.id vivienda.titulo|slugify %}">
+							<img class="img-fluid rounded mb-3 mb-md-0" src="{{vivienda.imagen.url}}" style="width: 100%; height: 100%;" alt="">
+							  {% if not device_is_mobile %}
+							<p class="more-info">Más información</p>
+							  {% endif %}
+						  </a>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<h3>{{vivienda.titulo}}</h3>
+						<h4>{{vivienda.operacion}}: {{vivienda.precio}} €{% if vivienda.operacion == 'Alquiler' %}/Dia{%endif%}</h4>
+						<p>{{vivienda.descripcion|safe}}</p>
+							<span><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-bed.svg' %}"> {{ vivienda.dormitorios }}&emsp;</span>
+							<span><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-shower.svg' %}"> {{ vivienda.banos }}&emsp;</span>
+							<span><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-square-dashed-2.svg' %}"> {{ vivienda.superficie }} (m2)</span>
+							<br>
+
+						<a class="btn btn-primary info" href="{% url 'vivienda' vivienda.id vivienda.titulo|slugify%}">Más información</a>
+					</div>
+					<hr>
+			  	</div>
+			{% endfor %}
+		<hr>
+		<div class="page-nav"></div>
+		{% else %}
+			<h1>No se han encontrado resultados.</h1>
+			<hr>
+		{% endif %}
+	</div>
+{% endblock %}

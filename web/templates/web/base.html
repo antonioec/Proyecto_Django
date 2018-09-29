@@ -1,155 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <title>Proyecto Integrado | {% block title %}{% endblock %}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Antonio Extremera Casado">
-    <meta name="description" content="Aplicación web alojada en Google Cloud Platform para Proyecto Integrado">
-    <meta name="keywords" content="">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'web/css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'web/css/mobile_styles.css' %}">
-    <script src="{% static 'web/js/scripts.js' %}"></script>
-    <script src="{% static 'web/js/validate.js' %}"></script>
-
-</head>
-<header>
-    {{ base_url }}
-	<div class="container-fluid">
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-		  <a class="navbar-brand" href="#">Navegador</a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-			<span class="navbar-toggler-icon"></span>
-		  </button>
-		  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-			<ul class="navbar-nav">
-			  <li class="nav-item">
-				<a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Inicio</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link {% if request.path == '/contacto/' %}active{% endif %}" href="{% url 'contacto' %}">Contacto</a>
-			  </li>
-			</ul>
-		  </div>
-		</nav>
-
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#myCarousel" data-slide-to="0" class=""></li>
-              <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
-              <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item">
-                <img class="first-slide" src="{% static 'web/img/Vivienda1.jpg' %}" alt="">
-                <div class="container">
-                  <div class="carousel-caption text-left">
-                    <h1>Example headline.</h1>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+    <head>
+        <title>Proyecto Integrado | {% block title %}{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Antonio Extremera Casado">
+        <meta name="description" content="Aplicación web alojada en Google Cloud Platform para Proyecto Integrado">
+        <meta name="keywords" content="">
+        {% load static %}
+        {% load is_mobile %}
+        {% device_is_mobile request as device_is_mobile %}
+        <link rel="shortcut icon" href="{% static 'web/img/favicon.ico' %}" type="image/x-icon" />
+        <link rel="stylesheet" href="{% static 'web/vendor/css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'web/vendor/css/bootstrap-grid.css' %}">
+        <link rel="stylesheet" href="{% static 'web/css/styles.css' %}">
+        <script src="{% static 'web/vendor/js/jquery-3.3.1.js' %}"></script>
+        <script src="{% static 'web/vendor/js/jquery.simplePagination.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'web/vendor/css/simplePagination.css' %}">
+        <script>
+            if ((navigator.userAgent.match(/Android/i)) ||
+                (navigator.userAgent.match(/webOS/i)) ||
+                (navigator.userAgent.match(/iPhone/i)) ||
+                (navigator.userAgent.match(/iPod/i)) ||
+                (navigator.userAgent.match(/iPad/i)) ||
+                (navigator.userAgent.match(/BlackBerry/i))) {
+                    document.write('<link rel="stylesheet" href="{% static 'web/css/mobile_styles.css' %}">')
+            }
+        </script>
+        <script src="{% static 'web/js/scripts.js' %}"></script>
+        <script src="{% static 'web/js/validate.js' %}"></script>
+    </head>
+    <header>
+        <div class="container-fluid">
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                  <a class="navbar-brand" href="#"><img src="{% static 'web/img/logo/home-32-140131.png' %}">{% if device_is_mobile %}<span class="nav-text"> Navegador</span>{% endif %}</a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Inicio</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/viviendas/' %}active{% endif %}" href="{% url 'viviendas' %}">Viviendas</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/nosotros/' %}active{% endif %}" href="{% url 'nosotros' %}">Nosotros</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/contacto/' %}active{% endif %}" href="{% url 'contacto' %}">Contacto</a>
+                      </li>
+                       <li class="nav-item">
+                        <a class="nav-link active" href="/admin/">Administrador</a>
+                      </li>
+                    </ul>
                   </div>
+                </nav>
+
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                {% if not device_is_mobile %}
+                <div class="logo">
+                    <img src="{% static 'web/img/logo/home-152-140131.png' %}">
                 </div>
-              </div>
-              <div class="carousel-item active">
-                <img class="second-slide" src="{% static 'web/img/Vivienda2.jpg' %}" alt="">
-                <div class="container">
-                  <div class="carousel-caption text-left">
-                    <h1>Another example headline.</h1>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                {% endif %}
+                <ol class="carousel-indicators">
+                {% for carousel in carousel %}
+                  <li data-target="#myCarousel" data-slide-to="{{forloop.counter}}" class="{% if forloop.counter == 1 %}active{%endif%}"></li>
+                {% endfor %}
+                </ol>
+                <div class="carousel-inner">
+                {% for carousel in carousel %}
+                  <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="{{ carousel.imagen.url }}" alt="">
+                    <div class="container">
+                      <div class="carousel-caption text-left">
+                        {% if carousel.titulo %}<h2>{{ carousel.titulo }}</h2>{%endif%}
+                        {% if carousel.descripcion %}<p>{{ carousel.descripcion }}</p>{%endif%}
+                        {% if carousel.link %}<p><a class="btn btn-lg btn-primary" href="{{carousel.link}}" role="button">Más información</a></p>{%endif%}
+                      </div>
+                    </div>
                   </div>
+                {% endfor %}
                 </div>
-              </div>
-              <div class="carousel-item">
-                <img class="third-slide" src="{% static 'web/img/Vivienda3.jpg' %}" alt="">
-                <div class="container">
-                  <div class="carousel-caption text-left">
-                    <h1>One more for good measure.</h1>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-      </div>
-	</div>
-</header>
-<body>
-    <!-- Contenido -->
-    {% block content %}
+                <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+          </div>
+        </div>
+    </header>
+    <body>
+        <!-- Contenido -->
+        {% block content %}
 
 
-    {% endblock %}
-    <!-- Footer -->
-    <div class="jumbotron" style="margin-bottom:0">
-        <div class="row">
-            <div class="col-sm">
-                <h3>Redes Sociales</h3>
-                  <ul class="nav nav-pills flex-column">
-                  {% if LINK_FACEBOOK %}
-                    <li class="nav-item">
-                      <a class="nav-link" href="{{ LINK_FACEBOOK }}"><img style="width: 24px; heigth: 24px;" src="{% static 'web/img/Facebook.ico' %}"> Facebook</a>
-                    </li>
-                  {% endif %}
-                      {% if LINK_TWITTER %}
-                    <li class="nav-item">
-                      <a class="nav-link" href="{{ LINK_TWITTER }}"><img style="width: 24px; heigth: 24px;" src="{% static 'web/img/Twitter.gif' %}"> Twitter</a>
-                    </li>
-                  {% endif %}
-                      {% if LINK_INSTAGRAM %}
-                    <li class="nav-item">
-                      <a class="nav-link" href="{{ LINK_INSTAGRAM }}"><img style="width: 24px; heigth: 24px;" src="{% static 'web/img/Instagram.ico' %}"> Instagram</a>
-                    </li>
-                  {% endif %}
-                  </ul>
-                  <hr class="d-sm-none">
+        {% endblock %}
+        <!-- Footer -->
+        <div class="jumbotron" style="margin-bottom:0">
+            <div class="row">
+                <div class="col-sm">
+                    <h3>Redes Sociales</h3>
+                      <ul class="nav nav-pills flex-column">
+                      {% if LINK_FACEBOOK %}
+                        <li class="nav-item">
+                          <a class="nav-link social" href="{{ LINK_FACEBOOK }}"><img style="width: 24px; height: 24px;" src="{% static 'web/img/Facebook.ico' %}">Facebook</a>
+                        </li>
+                      {% endif %}
+                          {% if LINK_TWITTER %}
+                        <li class="nav-item">
+                          <a class="nav-link social" href="{{ LINK_TWITTER }}"><img style="width: 24px; height: 24px;" src="{% static 'web/img/Twitter.gif' %}">Twitter</a>
+                        </li>
+                      {% endif %}
+                          {% if LINK_INSTAGRAM %}
+                        <li class="nav-item">
+                          <a class="nav-link social" href="{{ LINK_INSTAGRAM }}"><img style="width: 24px; height: 24px;" src="{% static 'web/img/Instagram.ico' %}">Instagram</a>
+                        </li>
+                      {% endif %}
+                      </ul>
+                      <hr class="d-sm-none">
+                </div>
+                <div class="col-sm">
+                    <h3>Contacto</h3>
+                      <ul class="nav nav-pills flex-column">
+                      {% for contacto in contacto %}
+                        <li class="nav-item">
+                          <p><img style="width: 24px; heigth: 24px;" src="{% if contacto.tipo == 'Teléfono' %}{% static 'web/img/icons/si-glyph-smartphone.svg'%}{% elif contacto.tipo == 'Email' %}{% static 'web/img/icons/si-glyph-mail.svg'%}{% else %}{% static 'web/img/icons/si-glyph-pin-location.svg'%}{% endif %}"> {{contacto.tipo}}: {{contacto.valor}}</p>
+                        </li>
+                      {% endfor %}
+                      </ul>
+                      <hr class="d-sm-none">
+                </div>
+                <div class="col-sm">
+                    <h3>Destacados</h3>
+                      <ul class="nav nav-pills flex-column">
+                      {% for destacado in destacado %}
+                        <li class="nav-item">
+                          <a href="{% url 'vivienda' destacado.id destacado.titulo|slugify%}">{{ destacado.titulo }}</a>
+                        </li>
+                      {% endfor %}
+                      </ul>
+                </div>
             </div>
-            <div class="col-sm">
-                <h3>Contacto</h3>
-                  <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                      <p><img style="width: 24px; heigth: 24px;" src="{% static 'web/img/icons/si-glyph-smartphone.svg' %}"> Teléfono: 666666666</p>
-                    </li>
-                    <li class="nav-item">
-                      <a href="#"><img style="width: 24px; heigth: 24px;" src="{% static 'web/img/icons/si-glyph-mail.svg' %}"> Correo electrónico</a>
-                    </li>
-                  </ul>
-                  <hr class="d-sm-none">
+            <hr>
+            <div class="politicas text-center">
+                {% for politicas in politicas %}
+                    <a href="{% url 'politicas' politicas.id politicas.nombre|slugify %}">{{politicas.nombre}}</a>{% if not forloop.last %} |{% endif %}
+                {% endfor %}
             </div>
-            <div class="col-sm">
-                <h3>Destacados</h3>
-                  <ul class="nav nav-pills flex-column">
-                  {% for destacado in destacados %}
-                    <li class="nav-item">
-                      <a href="{{ destacado.link }}">{{ destacado.titulo }}</a>
-                    </li>
-                  {% endfor %}
-                  </ul>
-                  <hr class="d-sm-none">
+            <br>
+            <div class="copyright text-center">
+                <p>Copyright © 2018. Web desarrollada por Antonio Extremera Casado como Proyecto Integrado.</p>
             </div>
         </div>
-        <hr>
-        <div class="copyright text-center">
-            <p>Copyright © 2018. Web desarrollada por Antonio Extremera Casado como Proyecto Integrado.</p>
-        </div>
-    </div>
 
-    <!-- Librerias Bootstrap CSS JS-->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="{% static 'web/vendor/css/bootstrap.css' %}">
-    <!--<link rel="stylesheet" href="{% static 'web/vendor/css/bootstrap.min.css' %}">-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>-->
-    <script src="{% static 'web/vendor/js/bootstrap.js' %}"></script>
-</body>
+        <!-- Librerias Bootstrap CSS JS-->
+
+        <link rel="stylesheet" href="{% static 'web/vendor/css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'web/vendor/css/bootstrap-grid.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="{% static 'web/vendor/js/bootstrap.js' %}"></script>
+        <script src="{% static 'web/js/validate.js' %}"></script>
+        <script src="{% static 'web/js/scripts.js' %}"></script>
+    </body>
 </html>

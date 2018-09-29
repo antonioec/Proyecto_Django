@@ -6,6 +6,14 @@ body {
     background: #41eef4;
 }
 
+body a {
+    text-decoration: underline;
+}
+
+body a:hover {
+    text-decoration: none;
+}
+
 /*LOGOTIPO*/
 
 #logo {
@@ -115,5 +123,85 @@ div#copyright {
 .carousel-item img {
   display: block;
   width: 100%;
-  max-height: 550px;
+  max-height: 520px;
+}
+
+.col-md-7 {
+    margin-top: 50px;
+}
+
+.row.caract {
+    width: 85%;
+}
+
+ul.errorlist {
+    color: red;
+    font-weight: bold;
+}
+
+.carousel-item.gallery img{
+    max-height: 470px !important;
+}
+
+#errorName, #errorEmail, #errorArea {
+    color: red !important;
+    font-weight: bold;
+}
+
+.more-info-container {
+    width: 720px;
+    height: 400px;
+}
+
+.more-info {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding-top: 25%;
+    height: 100%;
+    transform: translateY(-100%);
+    display: none;
+    font-size: 30px;
+}
+
+.row.paginate {
+    margin-bottom: 50px;
+}
+
+nav.navbar.navbar-expand-sm.bg-dark.navbar-dark {
+    position: fixed;
+    z-index: 50;
+    width: 98.5%;
+}
+
+#Formulario {
+    width: 85%;
+    display: none;
+    padding-left: 13.4%;
+}
+
+.busqueda {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 28px;
+    padding-left: 13.4%;
+}
+
+.busqueda:hover {
+    text-decoration: none !important;
+}
+
+img.busqueda-img {
+    margin-left: 10px;
+}
+
+div#collapsibleNavbar {
+    padding-left: 15px;
+}
+
+.logo img {
+    position: absolute;
+    z-index: 1;
+    padding: 5% 8%;
 }

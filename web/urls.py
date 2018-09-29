@@ -2,8 +2,8 @@
 from django.conf.urls import url
 
 from . import views
+from .views import HomePageView
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
-    url(r'^contacto/', views.contacto, name='contacto'),
-    url(r'^seccion/(?P<vivienda_id>[0-9]+)/', views.section, name='seccion'),
+    #url(r'^$', views.home, name='home'),
+    url(r'^$', HomePageView.as_view(), name='home'),
 ]

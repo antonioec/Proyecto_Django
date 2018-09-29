@@ -1,27 +1,45 @@
-function validar(){
 
-    var nombre = document.getElementById("txtNombre");
-    var apellido = document.getElementById("txtApellido");
+$('#ContactForm').submit(function (event) {
 
-    var errorName = document.getElementById("errorName");
-    var errorSur = document.getElementById("errorSur");
+    if ($('#txtNombre').val()==''){
 
-    if (nombre.value.length < 1){
-
-        errorName.innerHTML = "Tienes que introducir un nombre";
+        $('#errorName').html("Tiene que introducir su Nombre.");
+        event.preventDefault();
         return false;
     }
     else
-        errorName.innerHTML = ""
+        $('#errorName').html("");
 
-    if (apellido.value.length < 1){
+    if ($('#txtEmail').val()==''){
 
-        errorSur.innerHTML = "Tienes que introducir un apellido";
+        $('#errorEmail').html("Tiene que introducir su Email.");
+        event.preventDefault();
+        return false;
+    }
+
+    else
+        $('#errorEmail').html("")
+
+    var email = $('#txtEmail').val();
+    if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+
+        errorEmail.innerHTML = "Tiene que introducir un Email válido.";
+        event.preventDefault();
+        return false;
+    }
+
+    else
+        errorEmail.innerHTML = ""
+
+    if ($('textarea#txtArea').val()==''){
+
+        $('#errorArea').html("Tiene que introducir su Mensaje.");
+        event.preventDefault();
         return false;
     }
     else
-        errorSur.innerHTML = ""
+        $('#errorArea').html("");
 
     return true;
 
-}
+});
