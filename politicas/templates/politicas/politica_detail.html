@@ -2,12 +2,14 @@
 {% block title %}{{ politica.nombre }}{% endblock %}
 {% block content %}
 {% load static %}
-<div class="container" style="margin-top:30px">
-    <hr>
-    <h2>{{ politica.nombre }}</h2>
-        <div>
-            <p>{{ politica.contenido | linebreaks }}</p>
-        </div>
-    <hr>
+<div class="wrapper-container" style="margin-top:30px">
+    <div class="container" style="margin-top:30px">
+        <hr>
+        <h2>{{ politica.nombre }}</h2>
+            <div>
+                <p>{{ politica.contenido|safe|linebreaks }}</p>
+            </div>
+        <hr>
+    </div>
 </div>
 {% endblock %}

@@ -3,7 +3,7 @@ $('#ContactForm').submit(function (event) {
 
     if ($('#txtNombre').val()==''){
 
-        $('#errorName').html("Tiene que introducir su Nombre.");
+        $('#errorName').html("Tiene que introducir su Nombre y Apellidos.");
         event.preventDefault();
         return false;
     }
@@ -39,6 +39,15 @@ $('#ContactForm').submit(function (event) {
     }
     else
         $('#errorArea').html("");
+
+    if ($('#privacy').is(':checked')==false){
+
+        $('#errorPrivacy').html("Tiene que aceptar nuestras políticas de privacidad.");
+        event.preventDefault();
+        return false;
+    }
+    else
+        $('#errorPrivacy').html("");
 
     return true;
 

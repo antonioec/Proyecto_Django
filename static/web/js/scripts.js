@@ -1,4 +1,65 @@
 
+$(window).on('load', function() {
+
+    $('.precio').each(function() {
+
+        var precio = new String($(this).html())
+
+        if (precio.length == 9) {
+            var precio2 = precio.slice(0, 3) + "." + precio.slice(3, 6) + "." + precio.slice(-4, -1)
+            $(this).html(precio2)
+        }
+        else if (precio.length == 8) {
+            var precio2 = precio.slice(0, 2) + "." + precio.slice(2, 5) + "." + precio.slice(-4, -1)
+            $(this).html(precio2)
+        }
+        else if (precio.length == 7) {
+            var precio2 = precio.slice(0, 1) + "." + precio.slice(1, 4) + "." + precio.slice(-4, -1)
+            $(this).html(precio2)
+        }
+        else if (precio.length > 3) {
+            var precio2 = precio.slice(0, -3) + "." + precio.slice(-4, -1)
+            $(this).html(precio2)
+        }
+    })
+
+    $('.supcons').each(function() {
+
+        var supcons = new String($(this).html())
+
+        if (supcons.slice(-2, supcons.length) == ',0') {
+            var supcons2 = supcons.slice(0, -2)
+            $(this).html(supcons2)
+        }
+
+    })
+
+    $('.suputil').each(function() {
+
+        var suputil = new String($(this).html())
+
+        if (suputil.slice(-2, suputil.length) == ',0') {
+            var suputil2 = suputil.slice(0, -2)
+            $(this).html(suputil2)
+        }
+
+    })
+
+    $('.suppar').each(function() {
+
+        var suppar = new String($(this).html())
+
+        if (suppar.slice(-2, suppar.length) == ',0') {
+            var suppar2 = suppar.slice(0, -2)
+            $(this).html(suppar2)
+        }
+
+    })
+
+    $('.row.home_row').fadeIn( 750 ).css('display', 'flex');
+    $('.home_hr').fadeIn( 750 ).css('display', 'flex');
+})
+
 $('[type=number]').keypress(function(event) {
 
     if (event.which < 48 || event.which > 57){
@@ -44,11 +105,9 @@ $('.busqueda').click(function() {
     else {
         var angle = 0
     }
-    console.log(angle)
     $('.busqueda-img').css('transform', 'rotate('+ angle + 'deg)')
 
 })
-
 
 jQuery(function($) {
     // Grab whatever we need to paginate
@@ -57,7 +116,7 @@ jQuery(function($) {
     // How many parts do we have?
     var numPages = pageParts.length;
     // How many parts do we want per page?
-    var perPage = 4;
+    var perPage = 12;
 
     // When the document loads we're on page 1
     // So to start with... hide everything else
@@ -80,8 +139,8 @@ jQuery(function($) {
             pageParts.hide()
                      .slice(start, end).fadeIn(750);
             $('html, body').animate({
-                scrollTop: $(".row").offset().top
-            }, 1000);
+                scrollTop: $("#viviendas-title").offset().top
+            }, 800);
         }
     });
 });

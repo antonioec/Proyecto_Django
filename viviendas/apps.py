@@ -6,4 +6,4 @@ from django.apps import AppConfig
 
 class ViviendasConfig(AppConfig):
     name = 'viviendas'
-    verbose_name = 'Administrador de Viviendas'
+    verbose_name = 'Administrador de Propiedades'

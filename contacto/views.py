@@ -43,7 +43,7 @@ class ContactoTemplateView(TemplateView):
             try:
                 newComment = Comentarios(nombre = request.POST['name'], email = request.POST['email'], comentario = request.POST['content'])
                 email = EmailMessage(
-                    "(Proyecto) Nuevo mensaje de contacto",
+                    "MAMJA - Nuevo mensaje de contacto",
                     "De " + request.POST['name'] + " (" + request.POST['email'] + ")\n\nContenido del mensaje: \n" + request.POST['content'],
                     request.POST['email'],
                     ["proantonio1997@gmail.com"],

@@ -1,89 +1,274 @@
+/* line 1, ../scss/mobile_styles.scss */
 .col-md-7 {
-    margin-top: 0 !important;
+  margin-top: 0 !important;
 }
 
+/* line 7, ../scss/mobile_styles.scss */
 .carousel-item img {
-    min-height: 280px;
+  min-height: 280px;
+  height: auto;
 }
 
+/* line 13, ../scss/mobile_styles.scss */
 a.btn.btn-lg.btn-primary {
-    font-size: 12px;
+  font-size: 12px;
 }
 
+/* line 17, ../scss/mobile_styles.scss */
 .carousel-caption {
-    bottom: 10px !important;
+  bottom: 40px !important;
+  left: 12.5% !important;
+  padding-bottom: 5px !important;
 }
 
-.container-fluid.search {
-    width: 94.5% !important;
+/* line 23, ../scss/mobile_styles.scss */
+.container-fluid.detail, .container-fluid.bg-grey {
+  width: 94.5% !important;
+  background: white;
 }
 
-.form-group {
-    font-size: 22.6px !important;
-}
-
-@media only screen and (max-width: 400px) {
-    .form-group {
-        font-size: 22.1px !important;
-    }
-}
-
+/* line 28, ../scss/mobile_styles.scss */
 .container {
-    padding-left: 25px !important;
+  width: 100% !important;
 }
 
+/* line 32, ../scss/mobile_styles.scss */
+.form-group {
+  font-size: 22.6px !important;
+}
+
+@media only screen and (min-width: 320px) {
+  /* line 37, ../scss/mobile_styles.scss */
+  .form-group {
+    font-size: 19.5px !important;
+  }
+
+  /* line 40, ../scss/mobile_styles.scss */
+  .list-group-item {
+    width: 91% !important;
+    font-size: 10.8px !important;
+  }
+
+  /* line 44, ../scss/mobile_styles.scss */
+  iframe.contact {
+    width: 250px;
+    height: 240px;
+    margin-top: 25px;
+  }
+
+  /* line 49, ../scss/mobile_styles.scss */
+  label.control-label.privacy {
+    font-size: 14px !important;
+  }
+}
+@media only screen and (min-width: 341px) {
+  /* line 55, ../scss/mobile_styles.scss */
+  .form-group {
+    font-size: 21.1px !important;
+  }
+
+  /* line 59, ../scss/mobile_styles.scss */
+  .list-group-item {
+    width: 91% !important;
+    font-size: 10.8px !important;
+  }
+
+  /* line 63, ../scss/mobile_styles.scss */
+  iframe.contact {
+    width: 290px;
+    height: 260px;
+    margin-top: 25px;
+  }
+}
+@media only screen and (min-width: 375px) {
+  /* line 71, ../scss/mobile_styles.scss */
+  .form-group {
+    font-size: 22.1px !important;
+  }
+
+  /* line 74, ../scss/mobile_styles.scss */
+  .list-group-item {
+    width: 96% !important;
+    font-size: 12.4px !important;
+  }
+
+  /* line 78, ../scss/mobile_styles.scss */
+  iframe.contact {
+    width: 300px;
+    height: 260px;
+    margin-top: 25px;
+  }
+}
+@media only screen and (min-width: 400px) {
+  /* line 86, ../scss/mobile_styles.scss */
+  .form-group {
+    font-size: 24.1px !important;
+  }
+
+  /* line 89, ../scss/mobile_styles.scss */
+  iframe.contact {
+    width: 330px;
+    height: 280px;
+    margin-top: 25px;
+  }
+}
+/* line 96, ../scss/mobile_styles.scss */
 img.img-fluid.rounded.mb-3.mb-md-0 {
-    width: 95% !important;
+  width: 95% !important;
 }
 
+/* line 100, ../scss/mobile_styles.scss */
 .col-sm-5.contacto {
-    margin-top: -45px;
+  margin-top: -45px;
 }
 
+/* line 104, ../scss/mobile_styles.scss */
 img.img-fluid.rounded.mb-3.mb-md-0 {
-    height: 280px !important;
+  height: 280px !important;
 }
 
+/* line 108, ../scss/mobile_styles.scss */
 .list-group-item {
-    padding: 0.55rem 1.25rem !important;
-    font-size: 14px;
-    height: 55px !important;
+  padding: 0.85rem 0.55rem !important;
+  font-size: 14px;
+  width: 90%;
+  height: 60px !important;
 }
 
+/* line 115, ../scss/mobile_styles.scss */
 .row.caract {
-    width: 108%;
+  width: 108%;
 }
 
+/* line 119, ../scss/mobile_styles.scss */
 .list-group {
-    width: 118% !important;
+  width: 118% !important;
 }
 
+/* line 123, ../scss/mobile_styles.scss */
 .col-sm-5.formulario {
-    margin-top: 25px !important;
+  margin-top: 25px !important;
 }
 
+/* line 127, ../scss/mobile_styles.scss */
 nav.navbar.navbar-expand-sm.bg-dark.navbar-dark {
-    width: 92.5%;
+  width: 92.5%;
 }
 
+/* line 131, ../scss/mobile_styles.scss */
 #Formulario {
-    width: 100%;
-    display: none;
-    padding-left: 0;
+  width: 100%;
+  display: none;
+  padding-left: 0;
 }
 
+/* line 137, ../scss/mobile_styles.scss */
 .busqueda {
-    padding-left: 0 !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
 }
 
+/* line 142, ../scss/mobile_styles.scss */
 .politicas.text-center {
-    font-size: 13px;
+  font-size: 15px;
 }
 
+/* line 146, ../scss/mobile_styles.scss */
 .copyright.text-center {
-    font-size: 12px;
+  font-size: 12px;
 }
 
+/* line 150, ../scss/mobile_styles.scss */
 span.nav-text {
-    background: none;
+  background: none;
+}
+
+@media only screen and (max-width: 340px) {
+  /* line 155, ../scss/mobile_styles.scss */
+  .list-group-item {
+    height: 50px !important;
+    font-size: 10.6px;
+    width: 100%;
+  }
+}
+/* line 162, ../scss/mobile_styles.scss */
+a.nav-link.social {
+  width: 140px !important;
+}
+
+/* line 166, ../scss/mobile_styles.scss */
+div#myCarousel_gallery {
+  width: auto;
+  height: auto;
+}
+
+/* line 172, ../scss/mobile_styles.scss */
+.detail-contacto {
+  display: inherit;
+  vertical-align: inherit;
+  padding-left: 0;
+  padding-top: 20px;
+}
+
+/* line 179, ../scss/mobile_styles.scss */
+.carousel-indicators {
+  bottom: 10px !important;
+}
+
+/* line 183, ../scss/mobile_styles.scss */
+.carousel-caption.text-left {
+  background-color: rgba(52, 58, 64, 0.6) !important;
+  width: 260px !important;
+  padding-top: 10px !important;
+  font-size: 13px;
+}
+/* line 189, ../scss/mobile_styles.scss */
+.carousel-caption.text-left h2 {
+  font-size: 24px;
+}
+
+/* line 194, ../scss/mobile_styles.scss */
+img.nav-logo {
+  width: 50px !important;
+}
+
+/* line 198, ../scss/mobile_styles.scss */
+span.nav-text {
+  padding: 0px 9px !important;
+}
+
+@media only screen and (max-width: 325px) {
+  /* line 203, ../scss/mobile_styles.scss */
+  .carousel-caption.text-left {
+    width: 260px !important;
+  }
+}
+/* line 208, ../scss/mobile_styles.scss */
+label.control-label.privacy {
+  font-size: 16px;
+}
+
+/* line 212, ../scss/mobile_styles.scss */
+form#ContactForm {
+  margin-top: 30px;
+}
+
+/* line 216, ../scss/mobile_styles.scss */
+.carousel-control-prev, .carousel-control-next {
+  bottom: -40px !important;
+}
+
+/* line 220, ../scss/mobile_styles.scss */
+ul.nav.nav-pills.flex-column.destacados {
+  list-style: none !important;
+}
+
+/* line 224, ../scss/mobile_styles.scss */
+footer div.col-sm {
+  height: initial !important;
+}
+
+/* line 228, ../scss/mobile_styles.scss */
+.light-theme a, .light-theme span {
+  width: auto;
 }

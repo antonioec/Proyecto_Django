@@ -11,6 +11,8 @@ class Nosotros(models.Model):
     id = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=255, verbose_name="Título")
     contenido = models.TextField(verbose_name="Contenido")
+    publicacion = models.DateField(verbose_name="Publicación", auto_now_add=True)
+    actualizacion = models.DateField(verbose_name="Actualización", auto_now=True)
 
     class Meta:
         verbose_name = "Nosotros"

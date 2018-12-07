@@ -9,9 +9,9 @@ from models import Contacto, Comentarios
 class ContactoAdmin(admin.ModelAdmin):
     def get_readonly_fields(self, request, obj=None):
         if request.user.groups.filter(name="Clientes").exists():
-            return ('tipo',)
+            return ('publicacion', 'actualizacion', 'tipo')
         else:
-            return ()
+            return ('publicacion', 'actualizacion')
 
     list_display = ('tipo', 'valor')
     ordering = ('id',)

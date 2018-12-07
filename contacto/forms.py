@@ -22,3 +22,9 @@ class ContactForm(forms.Form):
                'cols': 30,
                'placeholder': 'Introduzca su mensaje'}
     ))
+
+    privacy = forms.BooleanField(label="privacy", required=False, widget=forms.CheckboxInput(
+        attrs={
+               'id': 'privacy',
+               'novalidate': ''}
+    ))

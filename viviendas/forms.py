@@ -1,5 +1,6 @@
 from django import forms
 
+
 class BusquedaForm(forms.Form):
     OPERACION_CHOICES = (
                           ('Venta', 'Venta'),
@@ -7,18 +8,29 @@ class BusquedaForm(forms.Form):
                           ('', 'Cualquiera')
                         )
 
-    UBICACION_CHOICES = (
-                          ('Benalmadena Costa', 'Benalmadena Costa'),
+    CIUDAD_CHOICES = (
+                          ('Arroyo de la Miel', 'Arroyo de la Miel'),
                           ('Benalmadena Pueblo', 'Benalmadena Pueblo'),
+                          ('Benalmadena Costa', 'Benalmadena Costa'),
                           ('Torremolinos', 'Torremolinos'),
                           ('Fuengirola', 'Fuengirola'),
+                          ('Mijas Costa', 'Mijas Costa'),
+                          ('Marbella', 'Marbella'),
+                          ('Malaga', 'Malaga'),
                           ('', 'Cualquiera')
                         )
 
     TIPO_CHOICES = (
-                      ('Apartamento', 'Apartamento'),
-                      ('Atico', 'Atico'),
-                      ('Adosado', 'Adosado'),
+                      ('Piso', 'Piso'),
+                      ('Piso Atico', 'Piso Atico'),
+                      ('Atico Duplex', 'Atico Duplex'),
+                      ('Parcela', 'Parcela'),
+                      ('Parcela unifamiliar independiente', 'Parcela unifamiliar independiente'),
+                      ('Local Comercial', 'Local Comercial'),
+                      ('Edificio', 'Edificio'),
+                      ('Chalet Adosado', 'Chalet Adosado'),
+                      ('Chalet Pareado', 'Chalet Pareado'),
+                      ('Chalet Independiente', 'Chalet Independiente'),
                       ('', 'Cualquiera')
                     )
 
@@ -46,7 +58,7 @@ class BusquedaForm(forms.Form):
                'min': 0,
                'placeholder': 'Cualquiera'}
     ))
-    ubicacion = forms.ChoiceField(choices=UBICACION_CHOICES, label="ubicacion", required=False, widget=forms.Select(
+    ciudad = forms.ChoiceField(choices=CIUDAD_CHOICES, label="ciudad", required=False, widget=forms.Select(
         attrs={'class': 'form-control',
                'placeholder': 'Cualquiera'}
     ))

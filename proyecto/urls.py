@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+import django
 
 from django.conf import settings
 
@@ -22,6 +23,14 @@ from django.conf import settings
 urlpatterns = [
     # Path del administrador
     url(r'^admin/', admin.site.urls),
+
+    url(r'^viviendas/', include('viviendas.urls')),
+
+    url(r'^politicas/', include('politicas.urls')),
+
+    url(r'^contacto/', include('contacto.urls')),
+
+    url(r'^nosotros/', include('nosotros.urls')),
 
     # Paths de las secciones de la web
     url(r'^', include('web.urls')),
@@ -31,3 +40,8 @@ urlpatterns = [
 if settings.DEBUG:
     from django.conf.urls.static import static
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Custom titles for admin
+admin.site.site_header = "Mamja"
+admin.site.index_title = "Panel de administrador"
+admin.site.site_title = "Mamja"

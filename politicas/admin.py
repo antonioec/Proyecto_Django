@@ -8,11 +8,11 @@ from models import Politica
 class PoliticaAdmin(admin.ModelAdmin):
     def get_readonly_fields(self, request, obj=None):
         if request.user.groups.filter(name="Clientes").exists():
-            return ('nombre',)
+            return ('publicacion', 'actualizacion', 'nombre',)
         else:
-            return ()
+            return ('publicacion', 'actualizacion')
 
-    list_display = ('nombre', 'contenido')
+    list_display = ('nombre', 'activado', 'contenido')
     ordering = ('id',)
 
 admin.site.register(Politica, PoliticaAdmin)

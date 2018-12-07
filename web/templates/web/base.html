@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Proyecto Integrado | {% block title %}{% endblock %}</title>
+        <title>MAMJA | {% block title %}{% endblock %}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Antonio Extremera Casado">
@@ -15,25 +15,32 @@
         <link rel="stylesheet" href="{% static 'web/vendor/css/bootstrap-grid.css' %}">
         <link rel="stylesheet" href="{% static 'web/css/styles.css' %}">
         <script src="{% static 'web/vendor/js/jquery-3.3.1.js' %}"></script>
-        <script src="{% static 'web/vendor/js/jquery.simplePagination.js' %}"></script>
         <link rel="stylesheet" href="{% static 'web/vendor/css/simplePagination.css' %}">
         <script>
             if ((navigator.userAgent.match(/Android/i)) ||
-                (navigator.userAgent.match(/webOS/i)) ||
-                (navigator.userAgent.match(/iPhone/i)) ||
-                (navigator.userAgent.match(/iPod/i)) ||
-                (navigator.userAgent.match(/iPad/i)) ||
-                (navigator.userAgent.match(/BlackBerry/i))) {
+                (navigator.userAgent.match(/iPhone/i))) {
                     document.write('<link rel="stylesheet" href="{% static 'web/css/mobile_styles.css' %}">')
             }
         </script>
-        <script src="{% static 'web/js/scripts.js' %}"></script>
+        <script>
+            if ((navigator.userAgent.match(/iPad/i))) {
+                    document.write('<link rel="stylesheet" href="{% static 'web/css/ipad.css' %}">')
+            }
+        </script>
+
         <script src="{% static 'web/js/validate.js' %}"></script>
     </head>
     <header>
         <div class="container-fluid">
                 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-                  <a class="navbar-brand" href="#"><img src="{% static 'web/img/logo/home-32-140131.png' %}">{% if device_is_mobile %}<span class="nav-text"> Navegador</span>{% endif %}</a>
+                  <a class="navbar-brand" href="#"><img class="nav-logo" src="{{ logotipo.imagen_mobile.url }}">
+                      <script>
+                            if ((navigator.userAgent.match(/Android/i)) ||
+                                (navigator.userAgent.match(/iPhone/i))) {
+                                    document.write('<span class="nav-text"> Navegador</span>')
+                            }
+                       </script>
+                  </a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span>
                   </button>
@@ -43,27 +50,35 @@
                         <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Inicio</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/viviendas/' %}active{% endif %}" href="{% url 'viviendas' %}">Viviendas</a>
+                        <a class="nav-link {% if request.path == '/viviendas/' %}active{% endif %}" href="{% url 'viviendas' %}">Propiedades</a>
                       </li>
-                      <li class="nav-item">
+
+                      <!--<li class="nav-item">
                         <a class="nav-link {% if request.path == '/nosotros/' %}active{% endif %}" href="{% url 'nosotros' %}">Nosotros</a>
-                      </li>
+                      </li>-->
+
                       <li class="nav-item">
                         <a class="nav-link {% if request.path == '/contacto/' %}active{% endif %}" href="{% url 'contacto' %}">Contacto</a>
                       </li>
-                       <li class="nav-item">
-                        <a class="nav-link active" href="/admin/">Administrador</a>
+                       <li class="nav-item admin">
+                        <a class="nav-link active" href="/admin/" target="_blank">Administrador</a>
                       </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item admin">
+                        <a class="nav-link active" href="{% url 'admin:logout' %}">Cerrar sesión</a>
+                      </li>
+                        {% endif %}
                     </ul>
                   </div>
                 </nav>
 
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                {% if not device_is_mobile %}
-                <div class="logo">
-                    <img src="{% static 'web/img/logo/home-152-140131.png' %}">
-                </div>
-                {% endif %}
+                <script>
+                    if (!(navigator.userAgent.match(/Android/i)) &&
+                        !(navigator.userAgent.match(/iPhone/i))) {
+                            document.write('<div class="logo">\n<img src="{{ logotipo.imagen.url }}">\n</div>')
+                    }
+                </script>
                 <ol class="carousel-indicators">
                 {% for carousel in carousel %}
                   <li data-target="#myCarousel" data-slide-to="{{forloop.counter}}" class="{% if forloop.counter == 1 %}active{%endif%}"></li>
@@ -74,11 +89,13 @@
                   <div class="carousel-item {% if forloop.first %}active{% endif %}">
                     <img src="{{ carousel.imagen.url }}" alt="">
                     <div class="container">
-                      <div class="carousel-caption text-left">
+                    {% if carousel.titulo or carousel.descripcion or carousel.link %}
+                      <div class="carousel-caption text-left caption-bg">
                         {% if carousel.titulo %}<h2>{{ carousel.titulo }}</h2>{%endif%}
                         {% if carousel.descripcion %}<p>{{ carousel.descripcion }}</p>{%endif%}
                         {% if carousel.link %}<p><a class="btn btn-lg btn-primary" href="{{carousel.link}}" role="button">Más información</a></p>{%endif%}
                       </div>
+                    {% endif %}
                     </div>
                   </div>
                 {% endfor %}
@@ -101,71 +118,75 @@
 
         {% endblock %}
         <!-- Footer -->
-        <div class="jumbotron" style="margin-bottom:0">
-            <div class="row">
-                <div class="col-sm">
-                    <h3>Redes Sociales</h3>
-                      <ul class="nav nav-pills flex-column">
-                      {% if LINK_FACEBOOK %}
-                        <li class="nav-item">
-                          <a class="nav-link social" href="{{ LINK_FACEBOOK }}"><img style="width: 24px; height: 24px;" src="{% static 'web/img/Facebook.ico' %}">Facebook</a>
-                        </li>
-                      {% endif %}
-                          {% if LINK_TWITTER %}
-                        <li class="nav-item">
-                          <a class="nav-link social" href="{{ LINK_TWITTER }}"><img style="width: 24px; height: 24px;" src="{% static 'web/img/Twitter.gif' %}">Twitter</a>
-                        </li>
-                      {% endif %}
-                          {% if LINK_INSTAGRAM %}
-                        <li class="nav-item">
-                          <a class="nav-link social" href="{{ LINK_INSTAGRAM }}"><img style="width: 24px; height: 24px;" src="{% static 'web/img/Instagram.ico' %}">Instagram</a>
-                        </li>
-                      {% endif %}
-                      </ul>
-                      <hr class="d-sm-none">
+        <footer>
+            <div class="jumbotron" style="margin-bottom:0">
+                <div class="row">
+                    <div class="col-sm">
+                        <h3>Redes Sociales</h3>
+                          <ul class="nav nav-pills flex-column">
+                          {% if LINK_FACEBOOK %}
+                            <li class="nav-item">
+                              <a class="nav-link social" href="{{ LINK_FACEBOOK }}"><img style="width: 24px; height: 24px;" src="{% static 'web/img/Facebook.ico' %}">Facebook</a>
+                            </li>
+                          {% endif %}
+                              {% if LINK_TWITTER %}
+                            <li class="nav-item">
+                              <a class="nav-link social" href="{{ LINK_TWITTER }}"><img style="width: 24px; height: 24px;" src="{% static 'web/img/Twitter.gif' %}">Twitter</a>
+                            </li>
+                          {% endif %}
+                              {% if LINK_INSTAGRAM %}
+                            <li class="nav-item">
+                              <a class="nav-link social" href="{{ LINK_INSTAGRAM }}"><img style="width: 24px; height: 24px;" src="{% static 'web/img/Instagram.ico' %}">Instagram</a>
+                            </li>
+                          {% endif %}
+                          </ul>
+                          <hr class="d-sm-none">
+                    </div>
+                    <div class="col-sm">
+                        <h3>Contacto</h3>
+                          <ul class="nav nav-pills flex-column">
+                          {% for contacto in contacto %}
+                            <li class="nav-item">
+                              <p><img style="width: 24px; heigth: 24px;" src="{% if contacto.tipo == 'Teléfono' %}{% static 'web/img/icons/si-glyph-smartphone.svg'%}{% elif contacto.tipo == 'Email' %}{% static 'web/img/icons/si-glyph-mail.svg'%}{% else %}{% static 'web/img/icons/si-glyph-pin-location.svg'%}{% endif %}"> {{contacto.tipo}}: {{contacto.valor}}</p>
+                            </li>
+                          {% endfor %}
+                          </ul>
+                          <hr class="d-sm-none">
+                    </div>
+                    <div class="col-sm">
+                        <h3>Destacados</h3>
+                          <ul class="nav nav-pills flex-column destacados">
+                          {% for destacado in destacado %}
+                            <li class="nav-item">
+                              <a href="{% url 'vivienda' destacado.id destacado.titulo|slugify%}">{{ destacado.titulo }}</a>
+                            </li>
+                          {% endfor %}
+                          </ul>
+                    </div>
                 </div>
-                <div class="col-sm">
-                    <h3>Contacto</h3>
-                      <ul class="nav nav-pills flex-column">
-                      {% for contacto in contacto %}
-                        <li class="nav-item">
-                          <p><img style="width: 24px; heigth: 24px;" src="{% if contacto.tipo == 'Teléfono' %}{% static 'web/img/icons/si-glyph-smartphone.svg'%}{% elif contacto.tipo == 'Email' %}{% static 'web/img/icons/si-glyph-mail.svg'%}{% else %}{% static 'web/img/icons/si-glyph-pin-location.svg'%}{% endif %}"> {{contacto.tipo}}: {{contacto.valor}}</p>
-                        </li>
-                      {% endfor %}
-                      </ul>
-                      <hr class="d-sm-none">
+                <hr>
+                <div class="politicas text-center">
+                    {% for politicas in politicas %}
+                        <a href="{% url 'politicas' politicas.id politicas.nombre|slugify %}">{{politicas.nombre}}</a>{% if not forloop.last %} |{% endif %}
+                    {% endfor %}
                 </div>
-                <div class="col-sm">
-                    <h3>Destacados</h3>
-                      <ul class="nav nav-pills flex-column">
-                      {% for destacado in destacado %}
-                        <li class="nav-item">
-                          <a href="{% url 'vivienda' destacado.id destacado.titulo|slugify%}">{{ destacado.titulo }}</a>
-                        </li>
-                      {% endfor %}
-                      </ul>
+                <br>
+                <div class="copyright text-center">
+                    <p>Copyright © 2018. Web desarrollada por Antonio Extremera Casado como Proyecto Integrado.</p>
+                    <p style="text-decoration: underline; text-transform: uppercase; font-weight: bold; font-size: 14px;">Página en periodo de prueba y desarrollo. Contenidos, imágenes, textos, etc., no son válidos.</p>
                 </div>
             </div>
-            <hr>
-            <div class="politicas text-center">
-                {% for politicas in politicas %}
-                    <a href="{% url 'politicas' politicas.id politicas.nombre|slugify %}">{{politicas.nombre}}</a>{% if not forloop.last %} |{% endif %}
-                {% endfor %}
-            </div>
-            <br>
-            <div class="copyright text-center">
-                <p>Copyright © 2018. Web desarrollada por Antonio Extremera Casado como Proyecto Integrado.</p>
-            </div>
-        </div>
 
-        <!-- Librerias Bootstrap CSS JS-->
+            <!-- Librerias Bootstrap CSS JS-->
 
-        <link rel="stylesheet" href="{% static 'web/vendor/css/bootstrap.css' %}">
-        <link rel="stylesheet" href="{% static 'web/vendor/css/bootstrap-grid.css' %}">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-        <script src="{% static 'web/vendor/js/bootstrap.js' %}"></script>
-        <script src="{% static 'web/js/validate.js' %}"></script>
-        <script src="{% static 'web/js/scripts.js' %}"></script>
+            <link rel="stylesheet" href="{% static 'web/vendor/css/bootstrap.css' %}">
+            <link rel="stylesheet" href="{% static 'web/vendor/css/bootstrap-grid.css' %}">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+            <script src="{% static 'web/vendor/js/bootstrap.js' %}"></script>
+            <script src="{% static 'web/js/validate.js' %}"></script>
+            <script src="{% static 'web/js/scripts.js' %}"></script>
+            <script src="{% static 'web/vendor/js/jquery.simplePagination.js' %}"></script>
+        </footer>
     </body>
 </html>

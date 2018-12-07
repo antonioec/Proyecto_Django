@@ -1,0 +1,117 @@
+
+.logo {
+
+    img {
+        padding: 8% 8%;
+        width: 280px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .logo {
+
+        img {
+            padding: 10% 8%;
+            width: 250px;
+        }
+    }
+}
+
+nav.navbar.navbar-expand-sm.bg-dark.navbar-dark {
+    width: 97%;
+}
+
+@media only screen and (max-width: 768px) {
+    nav.navbar.navbar-expand-sm.bg-dark.navbar-dark {
+        width: 96%;
+    }
+}
+
+.col-md-5 p {
+    font-size: 12px;
+}
+
+div#myCarousel_gallery {
+    width: 650px;
+    height: 400px;
+}
+
+.carousel-item {
+    img {
+        height: 500px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .col-sm-5.formulario h2 {
+        font-size: 26px;
+    }
+    .form-group {
+        font-size: 20.1px !important;
+    }
+}
+
+.col-sm-5.contacto {
+    margin-top: -20px;
+    margin-right: 50px;
+}
+
+.carousel-caption.text-left.caption-bg {
+    width: 500px;
+}
+
+.form-group label {
+    width: 245px;
+}
+
+iframe.contact {
+    width: 320px;
+}
+
+label.control-label.privacy {
+    width: 280px;
+    font-size: 16px;
+}
+
+.form-group.privacy {
+    width: 320px;
+}
+
+.form-group.contact {
+    width: 320px;
+
+    label {
+        width: 300px;
+    }
+}
+
+form#ContactForm {
+    margin-top: 20px;
+}
+
+
+.container-fade {
+    width: 400px;
+    height: 290px;
+    transform: translateY(-42px);
+}
+
+@media only screen and (min-width: 900px) {
+    iframe.contact {
+        width: 400px;
+    }
+    .carousel-caption.text-left.caption-bg {
+        width: 650px;
+    }
+
+    .container-fade {
+        width: 520px;
+        height: 340px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    ul.nav.nav-pills.flex-column.destacados a {
+        font-size: 11px;
+    }
+}

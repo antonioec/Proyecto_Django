@@ -9,9 +9,9 @@ from models import Nosotros
 class NosotrosAdmin(admin.ModelAdmin):
     def get_readonly_fields(self, request, obj=None):
         if request.user.groups.filter(name="Clientes").exists():
-            return ('titulo',)
+            return ('publicacion', 'actualizacion', 'titulo',)
         else:
-            return ()
+            return ('publicacion', 'actualizacion')
 
     list_display = ('titulo', 'contenido')
     ordering = ('id',)

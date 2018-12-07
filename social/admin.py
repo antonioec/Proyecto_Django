@@ -8,9 +8,9 @@ from models import Social
 class SocialAdmin(admin.ModelAdmin):
     def get_readonly_fields(self, request, obj=None):
         if request.user.groups.filter(name="Clientes").exists():
-            return ('id',)
+            return ('publicacion', 'actualizacion', 'id',)
         else:
-            return ()
+            return ('publicacion', 'actualizacion')
 
     list_display = ('nombre', 'link')
 
