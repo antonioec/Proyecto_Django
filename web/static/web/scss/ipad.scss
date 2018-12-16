@@ -11,10 +11,23 @@
     .logo {
 
         img {
-            padding: 10% 8%;
+            padding: 8% 6%;
             width: 250px;
         }
     }
+}
+
+img.rooms-icons {
+    width: 18px !important;
+    height: 15px !important;
+}
+
+span.rooms-num {
+    font-size: 12px !important;
+}
+
+li.nav-item.contacto p {
+    font-size: 12px;
 }
 
 nav.navbar.navbar-expand-sm.bg-dark.navbar-dark {
@@ -44,10 +57,23 @@ div#myCarousel_gallery {
 
 @media only screen and (max-width: 768px) {
     .col-sm-5.formulario h2 {
-        font-size: 26px;
+        font-size: 25px;
     }
     .form-group {
         font-size: 20.1px !important;
+    }
+}
+
+.row.caract {
+    width: 100% !important;
+
+    .col .list-group .list-group-item {
+        font-size: 14px !important;
+
+        img {
+            width: 18px !important;
+            height: 15px !important;
+        }
     }
 }
 
@@ -56,8 +82,12 @@ div#myCarousel_gallery {
     margin-right: 50px;
 }
 
-.carousel-caption.text-left.caption-bg {
-    width: 500px;
+h3, .h3 {
+    font-size: 1.25rem !important;
+}
+
+h4, .h4 {
+    font-size: 1rem !important;
 }
 
 .form-group label {
@@ -94,6 +124,10 @@ form#ContactForm {
     width: 400px;
     height: 290px;
     transform: translateY(-42px);
+}
+
+.carousel-caption.text-left.caption-bg {
+    width: auto;
 }
 
 @media only screen and (min-width: 900px) {

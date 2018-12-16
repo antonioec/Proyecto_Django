@@ -7,120 +7,160 @@
 @media only screen and (max-width: 768px) {
   /* line 13, ../scss/ipad.scss */
   .logo img {
-    padding: 10% 8%;
+    padding: 8% 6%;
     width: 250px;
   }
 }
 /* line 20, ../scss/ipad.scss */
+img.rooms-icons {
+  width: 18px !important;
+  height: 15px !important;
+}
+
+/* line 25, ../scss/ipad.scss */
+span.rooms-num {
+  font-size: 12px !important;
+}
+
+/* line 29, ../scss/ipad.scss */
+li.nav-item.contacto p {
+  font-size: 12px;
+}
+
+/* line 33, ../scss/ipad.scss */
 nav.navbar.navbar-expand-sm.bg-dark.navbar-dark {
   width: 97%;
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 25, ../scss/ipad.scss */
+  /* line 38, ../scss/ipad.scss */
   nav.navbar.navbar-expand-sm.bg-dark.navbar-dark {
     width: 96%;
   }
 }
-/* line 30, ../scss/ipad.scss */
+/* line 43, ../scss/ipad.scss */
 .col-md-5 p {
   font-size: 12px;
 }
 
-/* line 34, ../scss/ipad.scss */
+/* line 47, ../scss/ipad.scss */
 div#myCarousel_gallery {
   width: 650px;
   height: 400px;
 }
 
-/* line 40, ../scss/ipad.scss */
+/* line 53, ../scss/ipad.scss */
 .carousel-item img {
   height: 500px;
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 46, ../scss/ipad.scss */
+  /* line 59, ../scss/ipad.scss */
   .col-sm-5.formulario h2 {
-    font-size: 26px;
+    font-size: 25px;
   }
 
-  /* line 49, ../scss/ipad.scss */
+  /* line 62, ../scss/ipad.scss */
   .form-group {
     font-size: 20.1px !important;
   }
 }
-/* line 54, ../scss/ipad.scss */
+/* line 67, ../scss/ipad.scss */
+.row.caract {
+  width: 100% !important;
+}
+/* line 70, ../scss/ipad.scss */
+.row.caract .col .list-group .list-group-item {
+  font-size: 14px !important;
+}
+/* line 73, ../scss/ipad.scss */
+.row.caract .col .list-group .list-group-item img {
+  width: 18px !important;
+  height: 15px !important;
+}
+
+/* line 80, ../scss/ipad.scss */
 .col-sm-5.contacto {
   margin-top: -20px;
   margin-right: 50px;
 }
 
-/* line 59, ../scss/ipad.scss */
-.carousel-caption.text-left.caption-bg {
-  width: 500px;
+/* line 85, ../scss/ipad.scss */
+h3, .h3 {
+  font-size: 1.25rem !important;
 }
 
-/* line 63, ../scss/ipad.scss */
+/* line 89, ../scss/ipad.scss */
+h4, .h4 {
+  font-size: 1rem !important;
+}
+
+/* line 93, ../scss/ipad.scss */
 .form-group label {
   width: 245px;
 }
 
-/* line 67, ../scss/ipad.scss */
+/* line 97, ../scss/ipad.scss */
 iframe.contact {
   width: 320px;
 }
 
-/* line 71, ../scss/ipad.scss */
+/* line 101, ../scss/ipad.scss */
 label.control-label.privacy {
   width: 280px;
   font-size: 16px;
 }
 
-/* line 76, ../scss/ipad.scss */
+/* line 106, ../scss/ipad.scss */
 .form-group.privacy {
   width: 320px;
 }
 
-/* line 80, ../scss/ipad.scss */
+/* line 110, ../scss/ipad.scss */
 .form-group.contact {
   width: 320px;
 }
-/* line 83, ../scss/ipad.scss */
+/* line 113, ../scss/ipad.scss */
 .form-group.contact label {
   width: 300px;
 }
 
-/* line 88, ../scss/ipad.scss */
+/* line 118, ../scss/ipad.scss */
 form#ContactForm {
   margin-top: 20px;
 }
 
-/* line 93, ../scss/ipad.scss */
+/* line 123, ../scss/ipad.scss */
 .container-fade {
   width: 400px;
   height: 290px;
   transform: translateY(-42px);
 }
 
+/* line 129, ../scss/ipad.scss */
+.carousel-caption.text-left.caption-bg {
+  width: auto;
+}
+
 @media only screen and (min-width: 900px) {
-  /* line 100, ../scss/ipad.scss */
+  /* line 134, ../scss/ipad.scss */
   iframe.contact {
     width: 400px;
   }
 
-  /* line 103, ../scss/ipad.scss */
+  /* line 137, ../scss/ipad.scss */
   .carousel-caption.text-left.caption-bg {
     width: 650px;
   }
 
-  /* line 107, ../scss/ipad.scss */
+  /* line 141, ../scss/ipad.scss */
   .container-fade {
     width: 520px;
     height: 340px;
   }
 }
 @media only screen and (max-width: 800px) {
-  /* line 114, ../scss/ipad.scss */
+  /* line 148, ../scss/ipad.scss */
   ul.nav.nav-pills.flex-column.destacados a {
     font-size: 11px;
   }

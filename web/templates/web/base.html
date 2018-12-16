@@ -17,13 +17,14 @@
         <script src="{% static 'web/vendor/js/jquery-3.3.1.js' %}"></script>
         <link rel="stylesheet" href="{% static 'web/vendor/css/simplePagination.css' %}">
         <script>
-            if ((navigator.userAgent.match(/Android/i)) ||
+            if ((navigator.userAgent.match(/Android/i) && screen.width<560) ||
                 (navigator.userAgent.match(/iPhone/i))) {
                     document.write('<link rel="stylesheet" href="{% static 'web/css/mobile_styles.css' %}">')
             }
         </script>
         <script>
-            if ((navigator.userAgent.match(/iPad/i))) {
+            if ((navigator.userAgent.match(/iPad/i)) ||
+               (navigator.userAgent.match(/Android/i) && screen.width>=560)) {
                     document.write('<link rel="stylesheet" href="{% static 'web/css/ipad.css' %}">')
             }
         </script>
@@ -35,7 +36,7 @@
                 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                   <a class="navbar-brand" href="#"><img class="nav-logo" src="{{ logotipo.imagen_mobile.url }}">
                       <script>
-                            if ((navigator.userAgent.match(/Android/i)) ||
+                            if ((navigator.userAgent.match(/Android/i) && screen.width<560) ||
                                 (navigator.userAgent.match(/iPhone/i))) {
                                     document.write('<span class="nav-text"> Navegador</span>')
                             }
@@ -76,6 +77,10 @@
                 <script>
                     if (!(navigator.userAgent.match(/Android/i)) &&
                         !(navigator.userAgent.match(/iPhone/i))) {
+                            document.write('<div class="logo">\n<img src="{{ logotipo.imagen.url }}">\n</div>')
+                    }
+
+                    if (navigator.userAgent.match(/Android/i) && screen.width>=560) {
                             document.write('<div class="logo">\n<img src="{{ logotipo.imagen.url }}">\n</div>')
                     }
                 </script>
@@ -121,7 +126,7 @@
         <footer>
             <div class="jumbotron" style="margin-bottom:0">
                 <div class="row">
-                    <div class="col-sm">
+                    <div class="col-sm col-social">
                         <h3>Redes Sociales</h3>
                           <ul class="nav nav-pills flex-column">
                           {% if LINK_FACEBOOK %}
@@ -129,12 +134,12 @@
                               <a class="nav-link social" href="{{ LINK_FACEBOOK }}"><img style="width: 24px; height: 24px;" src="{% static 'web/img/Facebook.ico' %}">Facebook</a>
                             </li>
                           {% endif %}
-                              {% if LINK_TWITTER %}
+                          {% if LINK_TWITTER %}
                             <li class="nav-item">
                               <a class="nav-link social" href="{{ LINK_TWITTER }}"><img style="width: 24px; height: 24px;" src="{% static 'web/img/Twitter.gif' %}">Twitter</a>
                             </li>
                           {% endif %}
-                              {% if LINK_INSTAGRAM %}
+                          {% if LINK_INSTAGRAM %}
                             <li class="nav-item">
                               <a class="nav-link social" href="{{ LINK_INSTAGRAM }}"><img style="width: 24px; height: 24px;" src="{% static 'web/img/Instagram.ico' %}">Instagram</a>
                             </li>
@@ -142,22 +147,22 @@
                           </ul>
                           <hr class="d-sm-none">
                     </div>
-                    <div class="col-sm">
+                    <div class="col-sm col-contacto">
                         <h3>Contacto</h3>
                           <ul class="nav nav-pills flex-column">
                           {% for contacto in contacto %}
-                            <li class="nav-item">
+                            <li class="nav-item contacto">
                               <p><img style="width: 24px; heigth: 24px;" src="{% if contacto.tipo == 'Teléfono' %}{% static 'web/img/icons/si-glyph-smartphone.svg'%}{% elif contacto.tipo == 'Email' %}{% static 'web/img/icons/si-glyph-mail.svg'%}{% else %}{% static 'web/img/icons/si-glyph-pin-location.svg'%}{% endif %}"> {{contacto.tipo}}: {{contacto.valor}}</p>
                             </li>
                           {% endfor %}
                           </ul>
                           <hr class="d-sm-none">
                     </div>
-                    <div class="col-sm">
+                    <div class="col-sm col-destacados">
                         <h3>Destacados</h3>
                           <ul class="nav nav-pills flex-column destacados">
                           {% for destacado in destacado %}
-                            <li class="nav-item">
+                            <li class="nav-item destacado">
                               <a href="{% url 'vivienda' destacado.id destacado.titulo|slugify%}">{{ destacado.titulo }}</a>
                             </li>
                           {% endfor %}

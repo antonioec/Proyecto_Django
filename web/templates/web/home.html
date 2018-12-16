@@ -22,7 +22,7 @@
 							  <a href="{% url 'vivienda' destacado.id destacado.titulo|slugify%}">
 									<img class="img-fluid rounded mb-3 mb-md-0 img-more-info" src="{{destacado.imagen.url}}" style="width: 100%; height: 100%;" alt="">
 									  {% if not device_is_mobile %}
-									<div class="more-info"><p>Más información</p></div>
+										<div class="more-info"><p>Más información</p></div>
 									  {% endif %}
 							  </a>
 							</div>
@@ -32,11 +32,11 @@
 							<h3>{{destacado.ciudad}}{% if destacado.direccion %}, {{destacado.direccion}} {% endif %}</h3>
 							<h4>{{destacado.operacion}}: <span class="precio">{{destacado.precio}}</span> €{% if destacado.operacion == 'Alquiler' %}/Mes{%endif%}</h4>
 							<p>{{destacado.descripcion|safe}}</p>
-								<span><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-bed.svg' %}"> {% if destacado.dormitorios %} {{ destacado.dormitorios }}&emsp;{% else %} 0&emsp;{% endif %}</span>
-								<span><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-toilet.svg' %}"> {% if destacado.banos %} {{ destacado.banos }}&emsp;{% else %} 0&emsp;{% endif %}</span>
-								<span><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-shower.svg' %}">{% if destacado.aseos %} {{ destacado.aseos }}&emsp;{% else %} 0&emsp;{% endif %}</span>
-							{% if destacado.superficie_construida %}<span><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-square-dashed-2.svg' %}"> <span class="supcons">{{ destacado.superficie_construida }}</span> (m2c)</span>{% endif %}
-							{% if destacado.superficie_parcela %}<span>{% if not destacado.superficie_construida %}<img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-square-dashed-2.svg' %}">{% endif %} <span class="supcons">{{ destacado.superficie_parcela }}</span> (m2parc)</span>{% endif %}
+								<span class="rooms-num"><img class="rooms-icons" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-bed.svg' %}"> {% if destacado.dormitorios %} {{ destacado.dormitorios }}&emsp;{% else %} 0&emsp;{% endif %}</span>
+								<span class="rooms-num"><img class="rooms-icons" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-toilet.svg' %}"> {% if destacado.banos %} {{ destacado.banos }}&emsp;{% else %} 0&emsp;{% endif %}</span>
+								<span class="rooms-num"><img class="rooms-icons" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-shower.svg' %}">{% if destacado.aseos %} {{ destacado.aseos }}&emsp;{% else %} 0&emsp;{% endif %}</span>
+							{% if destacado.superficie_construida %}<span class="rooms-num"><img class="rooms-icons" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-square-dashed-2.svg' %}"> <span class="supcons">{{ destacado.superficie_construida }}</span> (m2c)</span>{% endif %}
+							{% if destacado.superficie_parcela %}<span class="rooms-num">{% if not destacado.superficie_construida %}<img class="rooms-icons" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-square-dashed-2.svg' %}">{% endif %} <span class="supcons">{{ destacado.superficie_parcela }}</span> (m2parc)</span>{% endif %}
 								<br>
 
 							<a class="btn btn-primary info" href="{% url 'vivienda' destacado.id destacado.titulo|slugify%}">Más información</a>
@@ -53,11 +53,11 @@
 							<h3>{{destacado.ciudad}}{% if destacado.direccion %}, {{destacado.direccion}} {% endif %}</h3>
 							<h4>{{destacado.operacion}}: <span class="precio">{{destacado.precio}}</span> €{% if destacado.operacion == 'Alquiler' %}/Mes{%endif%}</h4>
 							<p>{{destacado.descripcion|safe}}</p>
-								<span><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-bed.svg' %}"> {% if destacado.dormitorios %} {{ destacado.dormitorios }}&emsp;{% else %} 0&emsp;{% endif %}</span>
-								<span><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-toilet.svg' %}"> {% if destacado.banos %} {{ destacado.banos }}&emsp;{% else %} 0&emsp;{% endif %}</span>
-								<span><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-shower.svg' %}">{% if destacado.aseos %} {{ destacado.aseos }}&emsp;{% else %} 0&emsp;{% endif %}</span>
-							{% if destacado.superficie_construida %}<span><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-square-dashed-2.svg' %}"> <span class="supcons">{{ destacado.superficie_construida }}</span> (m2c)</span>{% endif %}
-							{% if destacado.superficie_parcela %}<span>{% if not destacado.superficie_construida %}<img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-square-dashed-2.svg' %}">{% endif %} <span class="supcons">{{ destacado.superficie_parcela }}</span> (m2parc)</span>{% endif %}
+								<span class="rooms-num"><img class="rooms-icons" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-bed.svg' %}"> {% if destacado.dormitorios %} {{ destacado.dormitorios }}&emsp;{% else %} 0&emsp;{% endif %}</span>
+								<span class="rooms-num"><img class="rooms-icons" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-toilet.svg' %}"> {% if destacado.banos %} {{ destacado.banos }}&emsp;{% else %} 0&emsp;{% endif %}</span>
+								<span class="rooms-num"><img class="rooms-icons" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-shower.svg' %}">{% if destacado.aseos %} {{ destacado.aseos }}&emsp;{% else %} 0&emsp;{% endif %}</span>
+							{% if destacado.superficie_construida %}<span class="rooms-num"><img class="rooms-icons" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-square-dashed-2.svg' %}"> <span class="supcons">{{ destacado.superficie_construida }}</span> (m2c)</span>{% endif %}
+							{% if destacado.superficie_parcela %}<span class="rooms-num">{% if not destacado.superficie_construida %}<img class="rooms-icons" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-square-dashed-2.svg' %}">{% endif %} <span class="supcons">{{ destacado.superficie_parcela }}</span> (m2parc)</span>{% endif %}
 								<br>
 
 							<a class="btn btn-primary info" href="{% url 'vivienda' destacado.id destacado.titulo|slugify%}">Más información</a>

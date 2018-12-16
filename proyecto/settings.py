@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-147o6+=^bu#(q4y=2z-$&#6$8tt5#7r^o!4=7v0y0_0&_1%j9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'a06e01c97.appspot.com',

@@ -134,11 +134,11 @@
 							<h3>{{vivienda.ciudad}}{% if vivienda.direccion %}, {{vivienda.direccion}} {% endif %}</h3>
 							<h4>{{vivienda.operacion}}: <span class="precio">{{vivienda.precio}}</span> €{% if vivienda.operacion == 'Alquiler' %}/Mes{%endif%}</h4>
 							<p>{{vivienda.descripcion|safe}}</p>
-								<span><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-bed.svg' %}"> {% if vivienda.dormitorios %} {{ vivienda.dormitorios }}&emsp;{% else %} 0&emsp;{% endif %}</span>
-								<span><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-toilet.svg' %}">{% if vivienda.banos %} {{ vivienda.banos }}&emsp;{% else %} 0&emsp;{% endif %}</span>
-								<span><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-shower.svg' %}">{% if vivienda.aseos %} {{ vivienda.aseos }}&emsp;{% else %} 0&emsp;{% endif %}</span>
-								{% if vivienda.superficie_construida %}<span><img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-square-dashed-2.svg' %}"> <span class="supcons">{{ vivienda.superficie_construida }}</span> (m2c)</span>{% endif %}
-								{% if vivienda.superficie_parcela %}<span>{% if not vivienda.superficie_construida %}<img style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-square-dashed-2.svg' %}">{% endif %} <span class="supcons">{{ vivienda.superficie_parcela }}</span> (m2parc)</span>{% endif %}
+								<span class="rooms-num"><img class="rooms-icons" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-bed.svg' %}"> {% if vivienda.dormitorios %} {{ vivienda.dormitorios }}&emsp;{% else %} 0&emsp;{% endif %}</span>
+								<span class="rooms-num"><img class="rooms-icons" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-toilet.svg' %}">{% if vivienda.banos %} {{ vivienda.banos }}&emsp;{% else %} 0&emsp;{% endif %}</span>
+								<span class="rooms-num"><img class="rooms-icons" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-shower.svg' %}">{% if vivienda.aseos %} {{ vivienda.aseos }}&emsp;{% else %} 0&emsp;{% endif %}</span>
+								{% if vivienda.superficie_construida %}<span class="rooms-num"><img class="rooms-icons" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-square-dashed-2.svg' %}"> <span class="supcons">{{ vivienda.superficie_construida }}</span> (m2c)</span>{% endif %}
+								{% if vivienda.superficie_parcela %}<span class="rooms-num">{% if not vivienda.superficie_construida %}<img class="rooms-icons" style="width: 24px; height: 20px;" src="{% static 'web/img/icons/si-glyph-square-dashed-2.svg' %}">{% endif %} <span class="supcons">{{ vivienda.superficie_parcela }}</span> (m2parc)</span>{% endif %}
 							<br>
 							<a class="btn btn-primary info" href="{% url 'vivienda' vivienda.id vivienda.titulo|slugify%}">Más información</a>
 						</div>
